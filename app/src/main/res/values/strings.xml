@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Image Rotator</string>
+    <string name="jumble_button">Jumble Images</string>
+    <string name="return_to_puzzle_button">Return To Puzzle</string>
+</resources>

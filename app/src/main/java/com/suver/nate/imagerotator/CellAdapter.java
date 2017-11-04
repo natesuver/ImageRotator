@@ -15,6 +15,7 @@ public class CellAdapter extends BaseAdapter {
     private Context mContext;
     private int[] mCellIds;
     private float[] mRotations;
+    private static final int cellSize = 250;
     public CellAdapter(Context c, int[] imageResourceIds, float[] rotations) {
         mContext = c;
         mCellIds = imageResourceIds;
@@ -37,7 +38,7 @@ public class CellAdapter extends BaseAdapter {
         ImageView imageView;
         if (convertView == null) {
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(250, 250));
+            imageView.setLayoutParams(new GridView.LayoutParams(cellSize, cellSize));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         } else {
             imageView = (ImageView) convertView;

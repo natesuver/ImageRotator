@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +14,7 @@ public class ImageActivity extends AppCompatActivity {
     private static final String IMAGE_INDEX = "com.suver.nate.imagerotator.imageindex";
     private static final String IMAGE_RESOURCE = "com.suver.nate.imagerotator.imageresourceid";
     private static final String IMAGE_ROTATION = "com.suver.nate.imagerotator.imagerotation";
+    private static final String LOG = "ImageActivity";
     private float mSelectedRotation;
     private int mImageIndex;
     private int mImageResourceId;
@@ -37,14 +39,19 @@ public class ImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image);
         mSelectedRotation = getIntent().getFloatExtra(IMAGE_ROTATION,-1);
         mImageIndex = getIntent().getIntExtra(IMAGE_INDEX,-1);
         mImageResourceId = getIntent().getIntExtra(IMAGE_RESOURCE,-1);
+        //run this after intent, in case we are recreating the view after a device rotation.
+        if (savedInstanceState!=null) {
+            mSelectedRotation=savedInstanceState.getFloat("rotation");
+        }
+        setContentView(R.layout.activity_image);
+
 
         mImageView = (ImageView) findViewById(R.id.imgView);
         mImageView.setImageResource(mImageResourceId);
-        mImageView.setRotation(mSelectedRotation);
+        rotateImage();
 
         mRotateLeft = (ImageButton) findViewById((R.id.rotate_left_button));
         mRotateLeft.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +78,6 @@ public class ImageActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        //
     }
 
     private void setOutgoingRotation() {
@@ -85,6 +91,12 @@ public class ImageActivity extends AppCompatActivity {
         mImageView.setRotation(mSelectedRotation);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(LOG,"onSaveInstanceState");
+        savedInstanceState.putFloat("rotation",mSelectedRotation);
+    }
     @Override
     public void onBackPressed() {
         setOutgoingRotation();

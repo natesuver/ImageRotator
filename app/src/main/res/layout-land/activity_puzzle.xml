@@ -22,21 +22,25 @@
         <GridView
             android:id="@+id/gridview"
             android:layout_width="wrap_content"
+            android:layout_weight=".8"
             android:layout_height="wrap_content"
-            android:columnWidth="25dp"
+            android:columnWidth="10dp"
             android:gravity="center"
-            android:horizontalSpacing="3dp"
+            android:horizontalSpacing="5dp"
             android:numColumns="4"
             android:stretchMode="columnWidth"
             android:verticalSpacing="5dp"
-            android:layout_weight=".7"
-        />
+            android:layout_gravity="center"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="120dp"
+
+    />
         <Button
             android:id="@+id/jumble_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/jumble_button"
-            android:layout_gravity="center_horizontal"
             />
     </LinearLayout>
 

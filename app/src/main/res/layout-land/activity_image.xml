@@ -9,24 +9,28 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="horizontal"
 
+        >
         <ImageView
             android:layout_width="wrap_content"
+            android:layout_weight=".8"
             android:layout_height="wrap_content"
             android:id="@+id/imgView"
-            android:minHeight="400dip"
-            android:minWidth="400dip"
+            android:minHeight="300dip"
+            android:minWidth="300dip"
             android:scaleType="centerInside"
             android:padding="5dp"
             android:background="#BBB"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="center">
             <ImageButton
                 android:id="@+id/rotate_left_button"

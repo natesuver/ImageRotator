@@ -82,8 +82,11 @@ public class PuzzleActivity extends AppCompatActivity {
 
     private void setImageRotation(GridView view,int index) {
         ImageView img = (ImageView)view.getChildAt(index);
-        float rotation = mRotations[index];
-        img.setRotation(rotation);
+        if (img!=null) {
+            float rotation = mRotations[index];
+            img.setRotation(rotation);
+        }
+
     }
 
     private void shuffleRotation(GridView view) {
@@ -95,7 +98,7 @@ public class PuzzleActivity extends AppCompatActivity {
 
     public static final float getRandomRotation() {
         Random rn = new Random();
-        int next = rn.nextInt(3) + 1;
+        int next = rn.nextInt(4) + 1; //get a random number between 1 and 4.
         float degrees = 90;
         return degrees*next;
     }
